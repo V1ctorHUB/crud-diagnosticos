@@ -1,0 +1,12 @@
+POST localhost:3001/DR-API/v1/DR/ HTTP/1.1
+Content-Type: application/json
+{
+    "name": "Sandra Elizabeth Ortiz Molina",
+    "codigo": 129436,
+    "edad": 65,
+    "genero": "F",
+    "rasgClinicos": "Edentulismo total",
+    "rasgRadiog": "SPA",
+    "estadoSistem": "Sistémicamente comprometida con hipertensión e hipotiroidismo"
+}
+
