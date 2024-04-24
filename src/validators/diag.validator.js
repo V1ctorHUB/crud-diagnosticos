@@ -10,7 +10,13 @@ const createDiagValidator = [
         .isInt().withMessage('el codigo debe ser un numero entero')
         .trim()
         .isLength({ min: 6, ma: 6 })
-        .withMessage("el codigo debe tener solamente 6 caracteres"),
+        .withMessage("el codigo debe tener solamente 6 caracteres")
+        .custom(async (codigo) => {
+            const diagnosis = await Diagnosis.findOne({ codigo });
+            if (diagnosis) {
+              throw new Error("El código ya está registrado.");
+            }
+          }),
 
     body('edad')
         .isInt().withMessage('La edad debe ser un numero entero')
