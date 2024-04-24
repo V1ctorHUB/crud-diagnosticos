@@ -1,4 +1,6 @@
 const { param, body } = require("express-validator");
+const Diag = require("../models/diagnostico.model");
+
 
 const createDiagValidator = [
     body('name')
@@ -12,9 +14,9 @@ const createDiagValidator = [
         .isLength({ min: 6, ma: 6 })
         .withMessage("el codigo debe tener solamente 6 caracteres")
         .custom(async (codigo) => {
-            const diagnosis = await Diagnosis.findOne({ codigo });
+            const diagnosis = await Diag.findOne({ codigo });
             if (diagnosis) {
-              throw new Error("El código ya está registrado.");
+              throw new Error(`El código ya está registrado.Codigo: ${diagnosis.codigo}`);
             }
           }).withMessage('Codigo ya registrado en la base de datos'),
 
