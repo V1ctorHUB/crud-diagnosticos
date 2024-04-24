@@ -16,7 +16,7 @@ const createDiagValidator = [
             if (diagnosis) {
               throw new Error("El código ya está registrado.");
             }
-          }),
+          }).withMessage('Codigo ya registrado en la base de datos'),
 
     body('edad')
         .isInt().withMessage('La edad debe ser un numero entero')
